@@ -1,0 +1,41 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Go template
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+#eclipse files
+.project
+.settings
+#macOS files
+.DS_Store
+#intellij idea files
+.idea/
+*.iml
+*.vpj
+*.vpw
+*.vpwhistu
+*.vtg
+#vscode
+.vscode/
+#logs
+**/*.log
+#test files
+test/**
+/config/seelog.xml
+#idservicelib
+service/idservicelib/*o
+service/idservicelib/libIdMappingGo.a
+go.sum
+edith
+application.json
+coverage.txt
