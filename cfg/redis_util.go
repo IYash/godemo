@@ -6,6 +6,9 @@ import (
 	"time"
 )
 var client *redis.Client
+func init(){
+	InitClient()
+}
 func InitClient(){
 	client = redis.NewClient(&redis.Options{Addr: "localhost:6379",Password: "",DB: 0})
 	pong,_ := client.Ping().Result()
@@ -14,12 +17,19 @@ func InitClient(){
 func Set(key string,value string) {
 	client.Set(key,value,time.Duration(180)*time.Second)
 }
+func Get(key string) string {
+	val,_ := client.Get(key).Result()
+	return val
+}
 func HMset(key string,field string,value string) {
 	client.HMSet(key,field,value)
 }
 func Hget(key string,field string) string {
 	fieldVal,_ := client.HGet(key,field).Result()
 	return fieldVal
+}
+func HgetAll(key string) (map[string]string,error){
+	return client.HGetAll(key).Result()
 }
 func GetAndDel(key string) string {
 	luastr := "local current = redis.call('get',KEYS[1]); if(current) then redis.call('del',KEYS[1]); end return current;"

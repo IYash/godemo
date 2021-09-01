@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"godemo/biz"
 	"godemo/cfg"
 	"godemo/model"
 	"godemo/serialize"
@@ -9,7 +10,7 @@ import (
 )
 
 func main(){
-	convert()
+	activityStyle()
 }
 func join(source string) string{
 	parts := strings.Split(source,",")
@@ -34,4 +35,14 @@ func convert(){
 	serialize.Unmarshal(data,&animals)
 	fmt.Println(animals)
 }
-
+func activityStyle(){
+	option := biz.CommonActivityStyleOption{
+		UserId:      "5fdc6cb90000000000002249",
+		Content:     "test0901",
+		PostMilSec:  "4000",
+		CommonType:  "1",
+	}
+	activityStyle,styleFrom := biz.CommonActivityStyleResolve(&option)
+	fmt.Println(*activityStyle)
+	fmt.Println(styleFrom)
+}

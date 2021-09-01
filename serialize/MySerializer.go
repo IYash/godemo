@@ -1,6 +1,7 @@
 package serialize
 import(
 	"encoding/json"
+	"strings"
 	"unsafe"
 )
 
@@ -14,4 +15,7 @@ func Marshal(val interface{}) ([]byte, error) {
 
 func BytesToString(bytes []byte) string {
 	return *(*string)(unsafe.Pointer(&bytes))
+}
+func StringIsEmpty(data string) bool {
+	return len(strings.TrimSpace(data)) == 0
 }
