@@ -10,7 +10,7 @@ import (
 )
 
 func main(){
-	activityStyle()
+	fmt.Println(biz.MatchIdolExp("1a","2","李寻欢",3))
 }
 func join(source string) string{
 	parts := strings.Split(source,",")
