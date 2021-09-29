@@ -14,17 +14,17 @@ func InitClient(){
 	pong,_ := client.Ping().Result()
 	logger.Info("Redis ping:", pong)
 }
-func Set(key string,value string) {
+func Set(key string,value interface{}) {
 	client.Set(key,value,time.Duration(180)*time.Second)
 }
 func Get(key string) string {
 	val,_ := client.Get(key).Result()
 	return val
 }
-func HMset(key string,field string,value string) {
+func HSet(key string,field string,value interface{}) {
 	client.HMSet(key,field,value)
 }
-func Hget(key string,field string) string {
+func HGet(key string,field string) string {
 	fieldVal,_ := client.HGet(key,field).Result()
 	return fieldVal
 }
@@ -43,4 +43,14 @@ func GetAndDel(key string) string {
 		return ""
 	}
 	return n.(string)
+}
+func SIsMember(key string,data string) bool {
+	isMember,_ := client.SIsMember(key,data).Result()
+	return isMember
+}
+func SAdd(key string,data string) {
+	client.SAdd(key,data)
+}
+func Decr(key string) {
+	client.Decr(key)
 }

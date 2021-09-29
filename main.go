@@ -10,7 +10,11 @@ import (
 )
 
 func main(){
-	fmt.Println(biz.MatchIdolExp("1a","2","李寻欢",3))
+	word1 := "hEllo"
+	word2 := "中秋He"
+	fmt.Println(strings.ToLower(word1))
+	fmt.Println(word1)
+	fmt.Println(strings.ToLower(word2))
 }
 func join(source string) string{
 	parts := strings.Split(source,",")
@@ -37,12 +41,12 @@ func convert(){
 }
 func activityStyle(){
 	option := biz.CommonActivityStyleOption{
-		UserId:      "5fdc6cb90000000000002249",
-		Content:     "test0901",
+		UserId:      "5fdc6cb90000000000002258",
+		Content:     "中秋快乐",
 		PostMilSec:  "4000",
-		CommonType:  "1",
+		CommonType:  "0",
 	}
-	activityStyle,styleFrom := biz.CommonActivityStyleResolve(&option)
-	fmt.Println(*activityStyle)
-	fmt.Println(styleFrom)
+	response := biz.CommonActivityStyleResolve(&option)
+	fmt.Println(response.ActivityStyle)
+	fmt.Println(response.StyleName)
 }

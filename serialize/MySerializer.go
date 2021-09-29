@@ -19,3 +19,6 @@ func BytesToString(bytes []byte) string {
 func StringIsEmpty(data string) bool {
 	return len(strings.TrimSpace(data)) == 0
 }
+func StringIsNotEmpty(data string) bool {
+	return !StringIsEmpty(data)
+}
